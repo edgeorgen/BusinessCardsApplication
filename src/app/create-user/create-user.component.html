@@ -1,17 +1,18 @@
-<div>
-    <h4>Register</h4>
+<div class>
+    <h1>Business Card Application Final Project</h1>
+    <h2>Register</h2>
     <div>
         <input type="text" placeholder="Username" #email required>
     </div>
-    <div class="formGroup">
+    <div>
         <input type="password" placeholder="Password" #password required>
     </div>
     <div>
-         <input type="button" value="Register" (click)="service.createUser(email.value, password.value)">
+         <input type="button" class="btn" value="Register" (click)="service.createUser(email.value, password.value)">
     </div>
 </div>
     
 <div>
-    <button (click)= "goToSignIn()">Have an Account? Sign In.</button >
+    <button class="btn" (click)= "goToSignIn()">Have an Account? Sign In.</button >
 
 </div>

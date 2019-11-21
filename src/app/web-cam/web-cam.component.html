@@ -1,17 +1,66 @@
-<div>
+<div style="text-align:center">
     <h1>
         Take a Picture of Your Business Card
     </h1>
 
-    <div>
+    <div class="indCard">
         <webcam [height]="1000" [width]="1000" [trigger]="takeObservable" (imageCapture)="createBusinessCard($event)"
             *ngIf="On"></webcam>
         <br />
-        <button class="trigBtn" (click)="takeSnapshot();">Take A Picture of Your Business Card</button>
+        <button class="trigBtn" (click)="takeSnapshot();">Click this Button to Take A Picture of Your Business Card and
+            add to your Contacts</button>
         <br />
     </div>
+    <br />
     <div>
-        <input type="button" class="btn" value="Log Out" (click)='dashService.signOut()'>
+        <input type="button" class="dbtn" value="Log Out" (click)='dashService.signOut()'>
     </div>
 
 </div>
+
+<ul>
+    <h2 style="text-align:center">Stored Business Cards</h2>
+    <div class="indCard" style="text-align:center">
+        <div *ngFor='let card of businessCards | async'>
+            <div>
+                <br />
+                <div>Name: {{card.name}}</div>
+                <form>
+                    Name: <input type="text" id="name" [(ngModel)]=name
+                        placeholder="Put Name New Name Here and and Press Button to Update"
+                        [ngModelOptions]="{standalone: true}"><br>
+                    <input type="button" value="Update Name" class="submitButton"
+                        (click)='bcService.updateCardName(card.id, card.uid, name)'>
+                </form>
+            </div>
+            <br />
+            <div>
+                <div>Email: {{card.email}}</div>
+                <form>
+                    Email: <input type="text" id="email" [(ngModel)]=email
+                        placeholder="Put Name New Email Here and and Press Button to Update"
+                        [ngModelOptions]="{standalone: true}"><br>
+                    <input type="button" value="Update Email" class="submitButton"
+                        (click)='bcService.updateCardEmail(card.id, card.uid, email)'>
+                </form>
+            </div>
+            <br />
+            <div>
+                <div>Phone #: {{card.phone}}</div>
+                <form>
+                    Phone #: <input type="text" id="phone" [(ngModel)]=phone
+                        placeholder="Put Name New Phone # Here and and Press Button to Update"
+                        [ngModelOptions]="{standalone: true}"><br>
+                    <input type="button" value="Update Phone Number" class="submitButton"
+                        (click)='bcService.updateCardPhone(card.id, card.uid, phone)'>
+                </form>
+            </div>
+
+            <img [src]='card.imageUrl' />
+            <br />
+            <div><button type="button" class="dbtn" (click)='bcService.deleteCard(card.id, card.uid)'>Delete
+                    Card</button></div>
+            <br />
+        </div>
+    </div>
+</ul>

@@ -1,16 +1,17 @@
 <div>
-    <h4>Sign In</h4>
-    <div>
+    <h1>Business Card Application Final Project</h1>
+    <h2>Sign In</h2>
+    <div class>
         <input type="text" placeholder="Username" #email required>
     </div>
-    <div class="formGroup">
+    <div>
         <input type="password" placeholder="Password" #password required>
     </div>
     <div>
-        <input type="button" value="Sign In" (click)='signInService.signIn(email.value,password.value)'>
+        <input type="button" class="signinbutton" value="Sign In" (click)='signInService.signIn(email.value,password.value)'>
     </div>
 </div>
 
 <div>
-    <button (click)= "goToCreateUser()">Need an Account? Create User.</button >
+    <button type="button" class="btn" (click)= "goToCreateUser()">Need an Account? Create User.</button >
 </div>
