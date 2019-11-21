@@ -1,1 +1,17 @@
-<p>web-cam works!</p>
+<div>
+    <h1>
+        Take a Picture of Your Business Card
+    </h1>
+
+    <div>
+        <webcam [height]="1000" [width]="1000" [trigger]="takeObservable" (imageCapture)="createBusinessCard($event)"
+            *ngIf="On"></webcam>
+        <br />
+        <button class="trigBtn" (click)="takeSnapshot();">Take A Picture of Your Business Card</button>
+        <br />
+    </div>
+    <div>
+        <input type="button" class="btn" value="Log Out" (click)='dashService.signOut()'>
+    </div>
+
+</div>
