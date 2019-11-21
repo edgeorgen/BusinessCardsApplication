@@ -14,6 +14,7 @@ import { AuthorizationService } from './auth-service.service';
 import {WebcamModule} from 'ngx-webcam';
 import { HttpClientModule} from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BusinessCardComponent } from './business-card/business-card.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NotFoundComponent,
     SignInComponent,
     WebCamComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    BusinessCardComponent
   ],
   imports: [
     BrowserModule,
