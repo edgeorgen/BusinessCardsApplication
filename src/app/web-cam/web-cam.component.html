@@ -19,10 +19,39 @@
 </div>
 
 <ul>
-    <h2 style="text-align:center">Stored Business Cards</h2>
+    <div style="text-align:center" class='topborder'>
+        <h2>Search Business Cards</h2>
+
+    </div>
+
+    <div class='indCard' style="text-align:center">
+        <br />
+        <form>
+            Name: <input type="text" id="name" [(ngModel)]=name [ngModelOptions]="{standalone: true}"><br>
+            <input type="button" value="Search Name" class="submitButton" (click)='searchName(name)'>
+        </form>
+        <br />
+        <form>
+            Email: <input type="text" id="email" [(ngModel)]=email [ngModelOptions]="{standalone: true}"><br>
+            <input type="button" value="Search Email" class="submitButton" (click)='searchEmail(email)'>
+        </form>
+        <br />
+        <form>
+            Phone: <input type="text" id="phone" [(ngModel)]=phone [ngModelOptions]="{standalone: true}"><br>
+            <input type="button" value="Search Phone #" class="submitButton" (click)='searchPhone(phone)'>
+        </form>
+        <br />
+        <div><button type="button" class="dbtn" (click)='resetCard()'>Reset
+                Business Card List</button></div>
+
+    </div>
+    <br />
+    <div style="text-align:center" class='topborder'>
+        <h2>Stored Business Cards </h2>
+    </div>
     <div class="indCard" style="text-align:center">
         <div *ngFor='let card of businessCards | async'>
-            <div class = "difCards">
+            <div class="difCards">
                 <br />
                 <div>Name: {{card.name}}</div>
                 <form>

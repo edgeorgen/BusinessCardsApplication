@@ -79,8 +79,8 @@ export class WebCamComponent implements OnInit {
   }
   public ngOnInit(): void {
     // tslint:disable-next-line: max-line-length
-    this.cardCollection = this.afs.collection<BusinessCard>('Users/' + this.uid + '/BusinessCards' + this.uid);
-    this.businessCards = this.cardCollection.valueChanges();
+    // this.cardCollection = this.afs.collection<BusinessCard>('Users/' + this.uid + '/BusinessCards' + this.uid);
+    // this.businessCards = this.cardCollection.valueChanges();
     this.cardCollection = this.afs.collection('Users/' + this.uid + '/BusinessCards' + this.uid);
     this.businessCards = this.cardCollection.valueChanges({ idField: 'id' });
   }
@@ -92,4 +92,34 @@ export class WebCamComponent implements OnInit {
   public get takeObservable(): Observable<void> {
     return this.taker.asObservable();
   }
+
+  public searchName(name: string) {
+    // tslint:disable-next-line: max-line-length
+    this.name = name;
+    // tslint:disable-next-line: max-line-length
+    this.cardCollection = this.afs.collection('Users/' + this.uid + '/BusinessCards' + this.uid, ref => ref.where('name', '==', this.name));
+    this.businessCards = this.cardCollection.valueChanges({ idField: 'id' });
+  }
+
+  public searchEmail(email: string) {
+    // tslint:disable-next-line: max-line-length
+    this.email = email;
+    // tslint:disable-next-line: max-line-length
+    this.cardCollection = this.afs.collection('Users/' + this.uid + '/BusinessCards' + this.uid, ref => ref.where('email', '==', this.email));
+    this.businessCards = this.cardCollection.valueChanges({ idField: 'id' });
+  }
+
+  public searchPhone(phone: string) {
+    // tslint:disable-next-line: max-line-length
+    this.phone = phone;
+    // tslint:disable-next-line: max-line-length
+    this.cardCollection = this.afs.collection('Users/' + this.uid + '/BusinessCards' + this.uid, ref => ref.where('phone', '==', this.phone));
+    this.businessCards = this.cardCollection.valueChanges({ idField: 'id' });
+  }
+
+  public resetCard() {
+    this.cardCollection = this.afs.collection('Users/' + this.uid + '/BusinessCards' + this.uid);
+    this.businessCards = this.cardCollection.valueChanges({ idField: 'id' });
+  }
+
 }
