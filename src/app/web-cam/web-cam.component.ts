@@ -70,8 +70,8 @@ export class WebCamComponent implements OnInit {
       console.log(results.responses[0].fullTextAnnotation.text);
       this.fullText = results.responses[0].fullTextAnnotation.text;
       this.email = JSON.stringify(this.fullText.match(/[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+/));
-      this.name = JSON.stringify(this.fullText.match(/([A-Za-z]+),\\s*([A-Za-z]+)\\s*([A-Za-z]+)/));
-      this.phone = JSON.stringify(this.fullText.match(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/));
+      this.name = JSON.stringify(this.fullText.match(/^([A-Z][a-z]+)\s([A-Z][a-zA-Z-]+)$/igm));
+      this.phone = JSON.stringify(this.fullText.match(/((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/));
       // tslint:disable-next-line: max-line-length
       this.bcService.create(this.fullText, this.email, this.name, this.phone, this.imageUrl, this.uid);
     });

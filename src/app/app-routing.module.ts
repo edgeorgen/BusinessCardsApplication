@@ -5,6 +5,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './core/auth.guard';
 import { WebCamComponent } from './web-cam/web-cam.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path: 'create-user', component: CreateUserComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'webcam', component: WebCamComponent, canActivate: [AuthGuard]},
+  {path: 'pageNotFound', component: NotFoundComponent},
+  {path: '**', redirectTo: '/pageNotFound'},
 
 ];
 
