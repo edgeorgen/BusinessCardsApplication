@@ -22,7 +22,7 @@
     <h2 style="text-align:center">Stored Business Cards</h2>
     <div class="indCard" style="text-align:center">
         <div *ngFor='let card of businessCards | async'>
-            <div>
+            <div class = "difCards">
                 <br />
                 <div>Name: {{card.name}}</div>
                 <form>
@@ -53,6 +53,17 @@
                         [ngModelOptions]="{standalone: true}"><br>
                     <input type="button" value="Update Phone Number" class="submitButton"
                         (click)='bcService.updateCardPhone(card.id, card.uid, phone)'>
+                </form>
+            </div>
+
+            <div>
+                <div>Additional Info: {{card.fullText}}</div>
+                <form>
+                    Additional Info: <input type="text" id="fullText" [(ngModel)]=fullText
+                        placeholder="Put Any Additional Info Here and and Press Button to Update"
+                        [ngModelOptions]="{standalone: true}"><br>
+                    <input type="button" value="Update Additional Info" class="submitButton"
+                        (click)='bcService.updateFullText(card.id, card.uid, fullText)'>
                 </form>
             </div>
 

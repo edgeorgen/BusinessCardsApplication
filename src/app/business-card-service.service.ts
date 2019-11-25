@@ -85,5 +85,13 @@ export class BusinessCardServiceService {
     // console.log(this.uid);
   }
 
+  updateFullText(cardId: string, uid: string, fullText: string) {
+    this.cardId = cardId.toString();
+    this.uid = uid;
+    this.fullText = fullText;
+    this.afs.collection('Users/' + this.uid + '/BusinessCards' + this.uid).doc(cardId).update({
+      fullText: this.fullText
+    });
+  }
 
 }
